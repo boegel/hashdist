@@ -249,7 +249,7 @@ def order_by_constraints(problem):
                 dfs(child)
             result.append(node)
 
-    for obj in sorted(roots, key=keys.__getitem__, reverse=True):
+    for obj in sorted(roots, key=keys.__getitem__):
         dfs(obj)
 
 
