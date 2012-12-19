@@ -155,6 +155,8 @@ class ArtifactBuilder(object):
             return Template(x).substitute(env)
 
         def tee(line):
+            self.logger.debug(line.strip())
+            log_file.write(line)
 
         log_filename = pjoin(build_dir, 'build.log')
         
