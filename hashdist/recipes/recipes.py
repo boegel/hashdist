@@ -227,6 +227,9 @@ def order_by_constraints(problem):
     key.
     
     """
+
+    keys = dict((tup[1], tup[0]) for tup in problem)
+    
     
 
 class HdistTool(Recipe):
