@@ -246,7 +246,9 @@ def order_by_constraints(problem):
             for child in graph['node']:
                 dfs(child)
             result.append(child)
-        
+
+    for key, obj, after_lst in problem.iteritems():
+        dfs(obj)
 
 
     return result
