@@ -191,6 +191,7 @@ class ArtifactBuilder(object):
 
                 # log the command to run
                 tee('running %r' % command_lst, 'hdist: ')
+                tee('environment:
                 
 
                 try:
