@@ -227,9 +227,14 @@ def order_by_constraints(problem):
     key.
     
     """
-
+    # more convenient with dict for keys
     keys = dict((tup[1], tup[0]) for tup in problem)
+    # invert the DAG
     before_edges = {}
+    for key, obj, after_lst in problem:
+        for after_obj in after_lst:
+            before_edges.setdefault(after_obj, []).append(obj)
+        
     
 
 class HdistTool(Recipe):
