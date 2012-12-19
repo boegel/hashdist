@@ -183,7 +183,8 @@ class Recipe(object):
              for dep in self.dependencies])
         
         dep_specs = []
-        for dep_name, dep in sorted_dependencies:
+        for dep_name in sorted_dependencies:
+            dep = self.dependencies[dep_name]
             dep_id = dep.get_artifact_id()
             dep_specs.append({"ref": dep_name, "id": dep_id, "in_path": True,
                               "in_hdist_compiler_paths": True})
