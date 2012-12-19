@@ -252,7 +252,8 @@ def order_by_constraints(problem):
     for obj in sorted(roots, key=keys.__getitem__):
         dfs(obj)
 
-    # 
+    # cycles will have been left entirely out at this point, so do
+    # some verification and raise an error
 
     return result
 
