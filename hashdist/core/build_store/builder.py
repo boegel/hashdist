@@ -176,10 +176,12 @@ class ArtifactBuilder(object):
                 log_file.write("hdist: running %r...\n" % command_lst)
 
                 # command-specific environment -- strings containing = before the command
+                cwd = build_dir
                 command_lst = list(command_lst)
                 command_env = dict(env)
                 while '=' in command_lst[0]:
                     key, value = command_lst[0].split('=')
+                    if key == 'CWD':
                     command_env[key] = value
                     del command_lst[0]
 
