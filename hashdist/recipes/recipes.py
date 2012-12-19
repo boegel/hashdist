@@ -3,6 +3,8 @@ import sys
 from .. import core
 from ..hdist_logging import colorize
 
+from pprint import pprint
+
 class BaseSourceFetch(object):
     def __init__(self, key, target, strip=0):
         self.key = key
