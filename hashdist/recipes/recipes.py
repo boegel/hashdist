@@ -216,7 +216,8 @@ def constrained_sort(problem):
 
     `problem` is a list of tuples ``(key, obj, [after_obj, ...])``.
     The result is all the `obj` items in an order such that, in each case,
-    `obj` comes after `after_obj`.
+    `obj` comes after `after_obj`. `key` is used to determine the order
+    
     
     
     where we require that ``
