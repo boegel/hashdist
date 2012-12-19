@@ -194,6 +194,13 @@ class Recipe(object):
     def get_env(self):
         return {}
 
+def find_dependency_in_spec(spec, ref):
+    """Utility to return the dict corresponding to the given ref
+    in a dependency build spec document fragment
+    """
+    for item in spec:
+        if item['ref'] == ref:
+            return item
 
 class Virtual(object):
     def __init__(self, virtual_name, wrapped_recipe):

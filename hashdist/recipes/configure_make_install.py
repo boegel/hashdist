@@ -14,7 +14,11 @@ class ConfigureMakeInstall(Recipe):
         self.configure_flags = configure_flags
 
     def get_commands(self):
-        return [['./configure', '--prefix=${TARGET}'] + self.configure_flags,
-                ['make'],
-                ['make', 'install']]
+        if self.name == 'hdf':
+            return [['/usr/bin/env']]
+        else:
+            return [['LDFLAGS=$HDIST_ABS_LDFLAGS', './configure', '--prefix=${TARGET}'] +
+                    self.configure_flags,
+                    ['make'],
+                    ['make', 'install']]
 

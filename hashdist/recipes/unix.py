@@ -1,10 +1,10 @@
-from . import recipes
+from .recipes import Recipe, hdist_tool
 
-class NonhashedHostPrograms(recipes.Recipe):
+class NonhashedHostPrograms(Recipe):
     def __init__(self, name, programs_and_prefixes=None):
-        recipes.Recipe.__init__(self, name, "host",
-                                hdist=recipes.hdist_tool,
-                                is_virtual=True)
+        Recipe.__init__(self, name, "host",
+                        hdist=hdist_tool,
+                        is_virtual=True)
         self.programs_and_prefixes = programs_and_prefixes
 
     def get_parameters(self):
@@ -35,8 +35,14 @@ unix_programs_usr_bin = (
     " split tsort cut link cksum whoami env yes mkfifo id factor"
     " expand basename nl tty shuf groups tac ptx truncate tail test"
     " unlink sha512sum du dirname od md5sum seq"
-    # additions
+    # awk
     " awk gawk pgawk igawk"
+    # findutils
+    " find xargs"
+    # diffutils
+    " sdiff cmp diff3 diff"
+    # make
+    " make"
     ).split()
 
 class NonhashedUnix(NonhashedHostPrograms):
@@ -48,10 +54,9 @@ class NonhashedUnix(NonhashedHostPrograms):
             links.append(('/usr/bin/%s' % prog, '/usr'))
         NonhashedHostPrograms.__init__(self, "unix", links)
 
-class NonhashedMake(NonhashedHostPrograms):
+class NonhashedBash(NonhashedHostPrograms):
     def __init__(self):
-        NonhashedHostPrograms.__init__(self, "make", [("/usr/bin/make", "/usr")])
-
+        NonhashedHostPrograms.__init__(self, "bash", [("/usr/bin/bash", "/usr")])
 
 gcc_stack_programs = (
     "addr2line ar strings readelf size gprof objcopy ld.gold c++filt ld.bfd as objdump"
