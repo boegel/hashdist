@@ -194,7 +194,7 @@ class ArtifactBuilder(object):
                 tee('cwd: ' + cwd)
                 tee('environment:')
                 for line in pformat(env).splitlines():
-                    tee(line)
+                    tee('  ' + line)
 
                 try:
                     proc = subprocess.Popen(command_lst,
