@@ -38,7 +38,7 @@ def stack_script_cli(root_recipe):
         sys.stderr.write('Build needed\n')
 
     if args.command == 'build':
-        build_recipes(build_store, source_cache, [root_recipe])
+        build_recipes(build_store, source_cache, [root_recipe], keep_policy=args.keep)
 
     artifact_dir = build_store.resolve(root_recipe.get_artifact_id())
 
