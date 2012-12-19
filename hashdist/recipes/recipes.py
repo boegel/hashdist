@@ -247,7 +247,7 @@ def order_by_constraints(problem):
         if node not in result:
             for child in graph[node]:
                 dfs(child)
-            result.append(child)
+            result.append(node)
 
     for obj in sorted(roots, key=keys.__getitem__):
         dfs(obj)
