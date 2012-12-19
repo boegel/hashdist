@@ -250,6 +250,7 @@ def order_by_constraints(problem):
 
     result = []
     def dfs(node):
+        print 'dfs', node
         if node not in result:
             result.append(node)
             for child in before_edges[node]:
