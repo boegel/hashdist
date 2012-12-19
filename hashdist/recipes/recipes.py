@@ -243,7 +243,8 @@ def order_by_constraints(problem):
             before_edges.setdefault(after_obj, []).append(obj)
 
     # sort the edges list
-    for obj, 
+    for obj, edges in before_edges.iteritems():
+        edges.sort(key=lambda obj: keys[obj])
 
     result = []
     def dfs(node):
