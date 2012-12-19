@@ -249,7 +249,8 @@ def order_by_constraints(problem):
     result = []
     def dfs(node):
         result.append(node)
-        children = 
+        for child in before_edges[node]:
+            
 
     # find roots, and for each root 
     roots = set(tup[1] for tup in problem)
