@@ -176,8 +176,6 @@ class ArtifactBuilder(object):
             for command_lst in script:
                 # substitute variables
                 command_lst = [subs(x) for x in command_lst]
-                self.logger.info('running %r' % command_lst)
-                log_file.write("hdist: running %r...\n" % command_lst)
 
                 # command-specific environment -- strings containing = before the command
                 cwd = build_dir
@@ -192,6 +190,8 @@ class ArtifactBuilder(object):
                     del command_lst[0]
 
                 # log the command to run
+                self.logger.info('running %r' % command_lst)
+                log_file.write("hdist: running %r...\n" % command_lst)
 
                 try:
                     proc = subprocess.Popen(command_lst,
