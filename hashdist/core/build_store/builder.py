@@ -174,6 +174,14 @@ class ArtifactBuilder(object):
                 command_lst = [subs(x) for x in command_lst]
                 log_file.write("hdist: running command %r\n" % command_lst)
 
+                # command-specific environment -- strings containing = before the command
+                command_lst = list(command_lst)
+                command_env = dict(env)
+                while '=' in command_lst[0]:
+                    key, value = command_lst[0].split('=')
+                    command_env[key] = value
+                    del command_lst[0]
+
                 try:
                     proc = subprocess.Popen(command_lst,
                                             cwd=build_dir,
@@ -203,8 +211,8 @@ class ArtifactBuilder(object):
                                            (retcode, build_dir), build_dir)
 
 
-                log_file.write("hdist: SUCCESS\n")
-                self.logger.info('SUCCESS')
+                log_file.write("hdist: success\n")
+                self.logger.info('success')
         shutil.copy(log_filename, pjoin(artifact_dir, 'build.log'))
 
 def rmtree_up_to(path, parent):

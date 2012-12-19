@@ -96,15 +96,43 @@ An example build spec:
 The build environment
 ---------------------
 
-The build environment is totally clean except for what is documented here.
-``$PATH`` is reset as discussed in the next section.
+The build environment variables are wiped out, and then set as
+documented here.
 
-The build starts in a temporary directory ``$BUILD`` with *sources*
-and *files* unpacked into it, and should result in something being
-copied/installed to ``$TARGET``. The build specification is available
-under ``$BUILD/build.json``, and output redirected to
-``$BUILD/build.log``; these two files will also be present in
-``$TARGET`` after the build.
+**BUILD**:
+    Set to the build directory. This is also the starting `cwd` of
+    each build command. This directory may be removed after the build.
+
+**TARGET**:
+    The location of the final artifact. Usually this is the "install location"
+    and should, e.g., be passed as the ``--prefix`` to ``./configure`-style
+    scripts.
+
+**PATH**:
+    Set to point to the ``bin``-sub-directories of dependencies with `in_path`
+    set.
+
+**HDIST_CFLAGS**:
+    Set to point to the ``include``-sub-directories of dependencies with
+    `in_hdist_compiler_path` set. The entries are of the usual form
+    ``-I/path/to/artifact/include -I/next/artifact/include``.
+
+**HDIST_ABS_LDFLAGS**:
+    Set to point to the ``lib*``-sub-directories of dependencies with
+    `in_hdist_compiler_path` set. The entries are both for the linker
+    (``-L/path/to/artifact/lib``) and for setting the `RPATH`
+    (``-Wl,-R,/path/to/artifact/lib``).
+
+**HDIST_REL_LDFLAGS**:
+    Like the above, but the `RPATH` entries are relative, using the ``$ORIGIN``
+    marker (e.g., ``-Wl,-R,$ORIGIN/../../../foo/1.2/AWXE``). This makes
+    the artifact relocateable without any patching, but only works for
+    dynamic libraries installed in a direct sub-directory (like ``lib``).
+
+
+The build specification is available under ``$BUILD/build.json``, and
+stdout and stderr are redirected to ``$BUILD/build.log``. These two
+files will also be present in ``$TARGET`` after the build.
 
 
 Build specification fields
@@ -132,13 +160,20 @@ Build specification fields
       one does not contribute to the hash. See section on virtual
       dependencies below.
 
-    Each dependency that has a ``bin`` sub-directory will have this inserted
-    in ``$PATH`` in the order the dependencies are listed (and these
-    are the *only* entries in ``$PATH``, ``/bin`` etc. are not present).
+    * **in_path**: Whether to add the ``bin`` sub-directory of the
+      artifact to the ``$PATH``. Defaults to `True`. (If the artifact
+      lacks a ``bin`` sub-directory it will not be added regardless.)
 
-    **Note**: The order affects the hash (since it affects ``$PATH``).
-    Whenever ordering does not matter, the list should be sorted prior
-    to input by the ``ref`` argument to maintain hash stability.
+    * **in_hdist_rpath**: Like `in_path` but affects ``HDIST_RPATH`; defaults
+    to `True`.
+
+    * **in_hdist_compiler_paths**: Like `in_path` but affects
+    ``HDIST_CFLAGS` and ``HDIST_LDFLAGS``; defaults to `True`.
+
+    **Note**: The order affects the hash (since it affects the
+    environment variables). Whenever ordering does not matter, the
+    list should be sorted prior to input by the ``ref`` argument to
+    maintain hash stability.
 
 **sources**:
     Unpacked into the temporary build directory. The optional ``target`` parameter
