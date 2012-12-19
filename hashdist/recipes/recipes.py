@@ -181,10 +181,7 @@ class Recipe(object):
         problem = [(dep_name, dep.get_artifact_id(),
                     [x.get_artifact_id() for x in dep.constrain_to_after])
                    for dep_name, dep in self.dependencies.iteritems()]
-        sorted_dependencies = constrained_sort(
-            [(dep.name, )
-             for dep in self.dependencies])
-        
+        sorted_names = constrained_sort(problem)
         dep_specs = []
         for dep_name in sorted_dependencies:
             dep = self.dependencies[dep_name]
