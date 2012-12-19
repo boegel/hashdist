@@ -16,7 +16,7 @@ class ConfigureMakeInstall(Recipe):
     def get_commands(self):
         return [
             ['which', 'gcc'],
-            ['gcc', '-v'],
+            ['gcc', '--version'],
             ['LDFLAGS=$HDIST_ABS_LDFLAGS', './configure', '--prefix=${TARGET}'] +
             self.configure_flags,
             ['make'],
