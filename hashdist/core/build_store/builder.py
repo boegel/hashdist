@@ -169,7 +169,6 @@ class ArtifactBuilder(object):
             if not isinstance(script, (list, tuple)):
                 raise TypeError('commands is not a list')
             
-
             for command_lst in script:
                 # substitute variables
                 command_lst = [subs(x) for x in command_lst]
