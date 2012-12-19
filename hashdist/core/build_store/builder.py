@@ -191,8 +191,9 @@ class ArtifactBuilder(object):
 
                 # log the command to run
                 tee('running %r' % command_lst, 'hdist: ')
-                tee('environment:
-                
+                tee('environment:')
+                for line in pformat(env).splitlines():
+                    tee(line)
 
                 try:
                     proc = subprocess.Popen(command_lst,
