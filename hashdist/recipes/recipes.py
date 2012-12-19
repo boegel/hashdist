@@ -245,7 +245,7 @@ def order_by_constraints(problem):
 
     def dfs(node):
         if node not in result:
-            for child in graph['node']:
+            for child in graph[node]:
                 dfs(child)
             result.append(child)
 
