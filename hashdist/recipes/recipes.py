@@ -217,7 +217,8 @@ def order_by_constraints(problem):
     `problem` is a list of tuples ``(key, obj, [after_obj, ...])``.
     The result is all the `obj` items in an order such that, in each case,
     `obj` comes after `after_obj`. `key` is used to determine the order
-    after the constraints are satisfied.
+    after the constraints are satisfied (the result may not be perfectly
+    sorted, but it will be 
 
     The concrete algorithm is to first invert the DAG (each object knows
     which ones it should come before), then start at the roots of this
