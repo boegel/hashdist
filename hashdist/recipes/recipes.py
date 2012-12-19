@@ -220,7 +220,8 @@ def constrained_sort(problem):
     after the constraints are satisfied.
 
     The concrete algorithm is to first invert the DAG (each object knows
-    which ones it should come before), then form
+    which ones it should come before), then start at the roots (objects
+    without 
     
     
     where we require that ``
