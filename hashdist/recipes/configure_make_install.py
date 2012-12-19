@@ -13,6 +13,9 @@ class ConfigureMakeInstall(Recipe):
         Recipe.__init__(self, name, version, source_fetches, **kw)
         self.configure_flags = configure_flags
 
+    def get_env(self):
+        return {'CCACHE_CC': '/home/dagss/.hdist/opt/ccache/3.1.8/JuN3'}
+
     def get_commands(self):
         return [
             ['which', 'gcc'],
