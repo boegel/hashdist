@@ -20,8 +20,6 @@ def stack_script_cli(root_recipe):
                         help='location of Hashdist config-file (default: %s))' % DEFAULT_CONFIG_FILENAME)
     parser.add_argument('-k', '--keep', choices=['never', 'always', 'error'], default='error,
                         help='when to keep build directories')
-    parser.add_argument('-n', '--never-keep', action='store_true',
-                        help='never keep temporary build directories')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='verbose mode')
     parser.add_argument('command', nargs='?', choices=['status', 'build'], default='status')
