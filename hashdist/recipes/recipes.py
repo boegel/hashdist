@@ -52,6 +52,7 @@ class Recipe(object):
         self.version = version
         self.source_fetches = source_fetches
         self.is_virtual = is_virtual
+        self.constrain_to_after = constrain_to_after
 
         dependencies = dict(dependencies) if dependencies is not None else {}
         env = dict(env) if env is not None else {}
