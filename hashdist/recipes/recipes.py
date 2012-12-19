@@ -178,7 +178,7 @@ class Recipe(object):
     # Subclasses may override the following
 
     def get_dependencies_spec(self):
-        sorted_dependencies = constraint_sort(
+        sorted_dependencies = constrained_sort(
             [(dep.get_artifact_id(), [x.get_artifact_id() for x in dep.constrain_to_after])
              for dep in self.dependencies])
         
