@@ -241,7 +241,7 @@ def order_by_constraints(problem):
         graph[obj] = after_lst
         roots.difference_update(after_lst)
 
-    results = {}
+    result = []
 
     def dfs(node):
         if node not in result:
