@@ -42,6 +42,8 @@ class Recipe(object):
     Parameters
     ----------
 
+    constrain_to_after : list of Recipe
+        
     
     """
 
