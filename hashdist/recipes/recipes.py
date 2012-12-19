@@ -231,11 +231,12 @@ def order_by_constraints(problem):
     keys = dict((tup[1], tup[0]) for tup in problem)
     # invert the DAG
     before_edges = {}
-    roots = set(tup[1] for tup in problem)
     for key, obj, after_lst in problem:
         for after_obj in after_lst:
             before_edges.setdefault(after_obj, []).append(obj)
-    
+    # find roots
+    roots = set(tup[1] for tup in problem)
+
 
 class HdistTool(Recipe):
     def __init__(self):
