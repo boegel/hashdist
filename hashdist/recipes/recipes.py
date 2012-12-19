@@ -241,14 +241,15 @@ def order_by_constraints(problem):
 
     results = {}
 
-    def dfs(node):
-        if node not in result:
+    def dfs(node, order_for_reached):
+        if node not in order_for_reached:
             for child in graph['node']:
                 dfs(child)
-            result.append(child)
+            order_for_reached.append(child)
 
     for key, obj, after_lst in problem.iteritems():
-        dfs(obj)
+        order_for_reached = []
+        dfs(obj, order_for_reached)
 
 
     return result
