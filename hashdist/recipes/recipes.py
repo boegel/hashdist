@@ -233,6 +233,9 @@ def order_by_constraints(problem):
     """
     # more convenient with dict for keys
     keys = dict((tup[1], tup[0]) for tup in problem)
+    # turn graph into 
+
+    
     # Invert the DAG + construct virtual root
     virtual_root = object()
     before_edges = {}
