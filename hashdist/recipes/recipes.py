@@ -225,7 +225,8 @@ def order_by_constraints(problem):
     `obj` must be hashable, `key` must be comparable
 
     The concrete algorithm is to first identify all roots, then
-    do a DFS, visiting children in reverse order of key, and emittings
+    do a DFS, visiting children in reverse order of key, and emitting
+    
     
     invert the DAG (each object knows
     which ones it should come before), then start at the roots of this
