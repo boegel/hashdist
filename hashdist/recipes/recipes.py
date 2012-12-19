@@ -234,7 +234,7 @@ def order_by_constraints(problem):
     for key, obj, after_lst in problem:
         for after_obj in after_lst:
             before_edges.setdefault(after_obj, []).append(obj)
-    # find roots
+    # add
     roots = set(tup[1] for tup in problem)
 
 
