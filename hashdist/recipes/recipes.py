@@ -178,15 +178,13 @@ class Recipe(object):
     # Subclasses may override the following
 
     def get_dependencies_spec(self):
-        dep_specs = []
-
         sorted_dependencies = constraint_sort(self.dependencies)
         
-        for dep_name, dep in self.dependencies:
+        dep_specs = []
+        for dep_name, dep in dependencies:
             dep_id = dep.get_artifact_id()
             dep_specs.append({"ref": dep_name, "id": dep_id, "in_path": True,
                               "in_hdist_compiler_paths": True})
-        dep_specs.sort(key=lambda spec: spec['ref'])
         return dep_specs
     
     def get_commands(self):
