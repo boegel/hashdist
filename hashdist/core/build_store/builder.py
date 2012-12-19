@@ -191,7 +191,7 @@ class ArtifactBuilder(object):
                         command_env[key] = value
                     del command_lst[0]
 
-                
+                # log the command to run
 
                 try:
                     proc = subprocess.Popen(command_lst,
