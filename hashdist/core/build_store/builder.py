@@ -213,7 +213,7 @@ class ArtifactBuilder(object):
 
 
                 log_file.write("hdist: success\n")
-                self.logger.info('  success')
+                self.logger.info('success')
         shutil.copy(log_filename, pjoin(artifact_dir, 'build.log'))
 
 def rmtree_up_to(path, parent):
