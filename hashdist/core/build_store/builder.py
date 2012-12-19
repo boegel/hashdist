@@ -190,7 +190,7 @@ class ArtifactBuilder(object):
                     del command_lst[0]
 
                 # log the command to run
-                tee('running %r' % command_lst)
+                tee('running %r' % command_lst, 'hdist: ')
                 
 
                 try:
