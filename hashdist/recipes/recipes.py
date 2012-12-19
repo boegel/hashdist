@@ -253,7 +253,7 @@ def order_by_constraints(problem):
             for child in before_edges[node]:
                 dfs(node)
     dfs(virtual_root)
-    return result
+    return result[1:]
 
 
 class HdistTool(Recipe):
