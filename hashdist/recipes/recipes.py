@@ -236,7 +236,6 @@ def order_by_constraints(problem):
         for after_obj in after_lst:
             before_edges.setdefault(after_obj, []).append(obj)
     
-    
 
 class HdistTool(Recipe):
     def __init__(self):
