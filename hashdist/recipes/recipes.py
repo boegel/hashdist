@@ -214,7 +214,11 @@ def find_dependency_in_spec(spec, ref):
 def constrained_sort(problem):
     """Sorts items by a key + a set of constraints
 
-    `problem` is a list of tuples ``(key, obj, [after_obj, ...])``
+    `problem` is a list of tuples ``(key, obj, [after_obj, ...])``.
+    The result will be sorted by `key` except that 
+    
+    
+    where we require that ``
     
     """
 
