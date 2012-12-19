@@ -182,7 +182,9 @@ class ArtifactBuilder(object):
                 while '=' in command_lst[0]:
                     key, value = command_lst[0].split('=')
                     if key == 'CWD':
-                    command_env[key] = value
+                        cwd = value
+                    else:
+                        command_env[key] = value
                     del command_lst[0]
 
                 try:
