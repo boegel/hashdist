@@ -239,6 +239,7 @@ def order_by_constraints(problem):
     for key, obj, after_lst in problem:
         after_lst = sorted(after_lst, key=lambda obj: keys[obj])
         graph[obj] = after_lst
+        roots.difference_update(after_lst)
 
     results = {}
 
