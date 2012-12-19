@@ -219,7 +219,8 @@ def constrained_sort(problem):
     `obj` comes after `after_obj`. `key` is used to determine the order
     after the constraints are satisfied.
 
-    The concrete algorithm is to first invert the DAG, then 
+    The concrete algorithm is to first invert the DAG (each object knows
+    which ones it should come before), then form
     
     
     where we require that ``
