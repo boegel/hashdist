@@ -255,9 +255,6 @@ def order_by_constraints(problem):
             for child in before_edges.get(node, ()):
                 dfs(child)
     dfs(virtual_root)
-
-
-    pprint( locals())
     return result[1:] # skip virtual root in output
 
 
