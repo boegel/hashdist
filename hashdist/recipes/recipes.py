@@ -248,12 +248,12 @@ def order_by_constraints(problem):
 
     result = []
     def dfs(node):
-        result.append(node)
-        for child in before_edges[node]:
-            
-
-    # find roots, and for each root 
-    roots = set(tup[1] for tup in problem)
+        if node not in result:
+            result.append(node)
+            for child in before_edges[node]:
+                dfs(node)
+    dfs(virtual_root)
+    return result
 
 
 class HdistTool(Recipe):
