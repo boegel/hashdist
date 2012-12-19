@@ -179,7 +179,7 @@ class Recipe(object):
 
     def get_dependencies_spec(self):
         sorted_dependencies = constrained_sort(
-            [(dep.name, [x.get_artifact_id() for x in dep.constrain_to_after])
+            [(dep.name, [x.name for x in dep.constrain_to_after])
              for dep in self.dependencies])
         
         dep_specs = []
