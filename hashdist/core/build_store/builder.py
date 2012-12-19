@@ -172,6 +172,7 @@ class ArtifactBuilder(object):
             for command_lst in script:
                 # substitute variables
                 command_lst = [subs(x) for x in command_lst]
+                self.logger.info('running %r' % command_lst)
                 log_file.write("hdist: running command %r\n" % command_lst)
 
                 # command-specific environment -- strings containing = before the command
