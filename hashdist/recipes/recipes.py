@@ -233,11 +233,11 @@ def order_by_constraints(problem):
     """
     # more convenient with dict for keys
     keys = dict((tup[1], tup[0]) for tup in problem)
-    # turn into dict-based graph with sorted edge lists, and identify roots
+    # turn into dict-based graph with reverse-sorted edge lists, and identify roots
     graph = {}
     roots = set(tup[1] for tup in problem)
     for key, obj, after_lst in problem:
-        after_lst = sorted(after_lst, key=keys.__getitem__)
+        after_lst = sorted(after_lst, key=keys.__getitem__, reverse=True)
         graph[obj] = after_lst
         roots.difference_update(after_lst)
 
