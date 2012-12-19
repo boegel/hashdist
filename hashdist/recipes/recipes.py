@@ -239,11 +239,14 @@ def order_by_constraints(problem):
         after_lst = sorted(after_lst, key=lambda obj: keys[obj])
         graph[obj] = after_lst
 
-    result = []
+    results = {}
 
     def dfs(node):
-        for child in graph['node']:
-            
+        if node not in result:
+            for child in graph['node']:
+                dfs(child)
+            result.append(child)
+        
 
 
     return result
