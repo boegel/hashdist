@@ -249,7 +249,8 @@ def order_by_constraints(problem):
                 dfs(child)
             order_for_reached.append(child)
 
-    for key, obj, after_lst in problem.iteritems():
+    roots = sorted(roots)
+    for obj in roots:
         order_for_reached = []
         dfs(obj, order_for_reached)
 
