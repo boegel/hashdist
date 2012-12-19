@@ -151,6 +151,8 @@ class ArtifactBuilder(object):
         if 'PATH' not in env:
             env['PATH'] = ''
 
+        env.update(self.build_spec.doc['env'])
+
         def subs(x):
             return Template(x).substitute(env)
 
