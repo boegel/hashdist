@@ -222,7 +222,8 @@ def order_by_constraints(problem):
 
     The concrete algorithm is to first invert the DAG (each object knows
     which ones it should come before), then start at the roots of this
-    DAG and form sub-trees using DFS (visiting nodes in ; then sort 
+    DAG and form sub-trees using DFS (visiting children in order sorted
+    by their key); then sort 
     
     
     where we require that ``
