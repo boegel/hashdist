@@ -233,9 +233,12 @@ def order_by_constraints(problem):
     virtual_root = object()
     before_edges = {}
     for key, obj, after_lst in problem:
+        if not after_lst:
+            # this is a root in the inverted DAG, so add a dependency
+            # from the virtual root to it
+            after_lst = [virtual_root]
         for after_obj in after_lst:
             before_edges.setdefault(after_obj, []).append(obj)
-        if not
     # find roots, and for each root 
     roots = set(tup[1] for tup in problem)
 
