@@ -6,7 +6,8 @@ from .recipes import Recipe, FetchSourceCode
 
 class ConfigureMakeInstall(Recipe):
     def __init__(self, name, version, source_url, source_key,
-                 configure_flags=[], strip=None, **kw):
+                 configure_flags=[], strip=None,
+                 constrain_to_after=, **kw):
         if strip is None:
             strip = 0 if source_key.startswith('git:') else 1
         source_fetches = [FetchSourceCode(source_url, source_key, strip=strip)]
