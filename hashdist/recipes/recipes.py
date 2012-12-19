@@ -229,7 +229,7 @@ def order_by_constraints(problem):
     """
 
     keys = dict((tup[1], tup[0]) for tup in problem)
-    before_set = 
+    before_edges = {}
     
 
 class HdistTool(Recipe):
