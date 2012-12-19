@@ -207,6 +207,8 @@ def find_dependency_in_spec(spec, ref):
         if item['ref'] == ref:
             return item
 
+def constraint_sort(dependencies):
+
 class Virtual(object):
     def __init__(self, virtual_name, wrapped_recipe):
         self.virtual_name = 'virtual:' + virtual_name
