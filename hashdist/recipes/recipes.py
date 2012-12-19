@@ -212,7 +212,7 @@ def find_dependency_in_spec(spec, ref):
             return item
 
 def constrained_sort(problem):
-    """Sorts a list 
+    """Sorts items by a key + a set of constraints
     
     """
 
