@@ -233,11 +233,13 @@ def order_by_constraints(problem):
     """
     # more convenient with dict for keys
     keys = dict((tup[1], tup[0]) for tup in problem)
-    # turn into dict-based graph
+    # turn into dict-based graph with sorted edge lists
     graph = {}
     for key, obj, after_lst in problem.iteritems():
         after_lst = sorted(after_lst, key=lambda obj: keys[obj])
-        graph[obj] 
+        graph[obj] = after_lst
+
+    
     graph = dcit((tup[1], tup[2]) for tup in problem
 
     
