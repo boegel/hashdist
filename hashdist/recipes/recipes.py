@@ -239,6 +239,15 @@ def order_by_constraints(problem):
         after_lst = sorted(after_lst, key=lambda obj: keys[obj])
         graph[obj] = after_lst
 
+    result = []
+
+    def dfs(node):
+        for child in graph['node']:
+            
+
+
+    return result
+
     
     graph = dcit((tup[1], tup[2]) for tup in problem
 
