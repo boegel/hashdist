@@ -236,7 +236,8 @@ def order_by_constraints(problem):
     # turn into dict-based graph
     graph = {}
     for key, obj, after_lst in problem.iteritems():
-        
+        after_lst = sorted(after_lst, key=lambda obj: keys[obj])
+        graph[obj] 
     graph = dcit((tup[1], tup[2]) for tup in problem
 
     
