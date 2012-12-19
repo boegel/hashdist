@@ -43,7 +43,8 @@ class Recipe(object):
     ----------
 
     constrain_to_after : list of Recipe
-        
+        Any recipe using this recipe must list this recipe first in PATH.
+        E.g., this describes the relationship between ccache and gcc.
     
     """
 
