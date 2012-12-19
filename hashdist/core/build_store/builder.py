@@ -190,8 +190,8 @@ class ArtifactBuilder(object):
                     del command_lst[0]
 
                 # log the command to run
-                self.logger.info('running %r' % command_lst)
-                log_file.write("hdist: running %r...\n" % command_lst)
+                tee('running %r' % command_lst)
+                
 
                 try:
                     proc = subprocess.Popen(command_lst,
