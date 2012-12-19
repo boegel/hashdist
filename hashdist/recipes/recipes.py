@@ -252,7 +252,7 @@ def order_by_constraints(problem):
     def dfs(node):
         if node not in result:
             result.append(node)
-            for child in before_edges[node]:
+            for child in before_edges.get(node, ()):
                 dfs(child)
     dfs(virtual_root)
 
