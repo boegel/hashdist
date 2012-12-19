@@ -50,7 +50,7 @@ class Recipe(object):
 
     
     def __init__(self, name, version, source_fetches=(), dependencies=None,
-                 env=None, is_virtual=False, constrain_to_after=(), **kw):
+                 env=None, is_virtual=False, **kw):
         self.name = name
         self.version = version
         self.source_fetches = source_fetches
