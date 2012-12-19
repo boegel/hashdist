@@ -214,7 +214,7 @@ def find_dependency_in_spec(spec, ref):
             return item
 
 def order_by_constraints(problem):
-    """Sorts items by a key + a set of constraints
+    """Order items by a set of constraints, stabilized by a key
 
     `problem` is a list of tuples ``(key, obj, [after_obj, ...])``.
     The result is all the `obj` items in an order such that, in each case,
