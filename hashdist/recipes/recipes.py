@@ -233,9 +233,10 @@ def order_by_constraints(problem):
     """
     # more convenient with dict for keys
     keys = dict((tup[1], tup[0]) for tup in problem)
-    # turn into dict-based graph with sorted edge lists
+    # turn into dict-based graph with sorted edge lists, and identify roots
     graph = {}
-    for key, obj, after_lst in problem.iteritems():
+    roots = set(tup[1] for tup in problem)
+    for key, obj, after_lst in problem:
         after_lst = sorted(after_lst, key=lambda obj: keys[obj])
         graph[obj] = after_lst
 
