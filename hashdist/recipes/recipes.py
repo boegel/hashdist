@@ -62,7 +62,7 @@ class Recipe(object):
 
         # parse kw to mean dependency if Recipe, or env entry otherwise
         for key, value in kw.iteritems():
-            if isinstance(value, (Recipe, Virtual)):
+            if isinstance(value, Recipe):
                 dependencies[key] = value
             elif isinstance(value, (str, int, float)):
                 env[key] = value
@@ -208,17 +208,7 @@ def find_dependency_in_spec(spec, ref):
             return item
 
 def constraint_sort(dependencies):
-
-class Virtual(object):
-    def __init__(self, virtual_name, wrapped_recipe):
-        self.virtual_name = 'virtual:' + virtual_name
-        self.wrapped_recipe = wrapped_recipe
-
-    def get_artifact_id(self):
-        return self.virtual_name
-
-    def __repr__(self):
-        return '<%s -> %s>' % (self.virtual_name, self.wrapped_recipe.get_artifact_id())
+    
 
 class HdistTool(Recipe):
     def __init__(self):
