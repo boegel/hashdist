@@ -173,7 +173,7 @@ class ArtifactBuilder(object):
                 # substitute variables
                 command_lst = [subs(x) for x in command_lst]
                 self.logger.info('running %r' % command_lst)
-                log_file.write("hdist: running %r\n" % command_lst)
+                log_file.write("hdist: running %r...\n" % command_lst)
 
                 # command-specific environment -- strings containing = before the command
                 command_lst = list(command_lst)
