@@ -71,7 +71,7 @@ class Recipe(object):
                                 (key, type(value)))
 
 
-        self.dependencies = list(dependencies.items())
+        self.dependencies = dependencies
         self.env = env
         self._build_spec = None
 
@@ -146,7 +146,7 @@ class Recipe(object):
         
         # bin all repeated artifacts on their own line
         repeated = []
-        for dep_name, dep in self.dependencies:
+        for dep_name, dep in sorted(self.dependencies.items()):
             if dep.get_real_artifact_id() in visited:
                 repeated.append(dep.get_display_name())
             else:
@@ -183,7 +183,7 @@ class Recipe(object):
              for dep in self.dependencies])
         
         dep_specs = []
-        for dep_name, dep in dependencies:
+        for dep_name, dep in sorted_dependencies:
             dep_id = dep.get_artifact_id()
             dep_specs.append({"ref": dep_name, "id": dep_id, "in_path": True,
                               "in_hdist_compiler_paths": True})
