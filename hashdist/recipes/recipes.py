@@ -226,14 +226,7 @@ def order_by_constraints(problem):
 
     The concrete algorithm is to first identify all roots, then
     do a DFS, visiting children in reverse order of key, and emitting
-    
-    
-    invert the DAG (each object knows
-    which ones it should come before), then start at the roots of this
-    DAG and form sub-trees using DFS (visiting children in order sorted
-    by their key); then finally output the sub-trees ordered by their
-    key.
-    
+    items to the result after visting the children.
     """
     # more convenient with dict for keys
     keys = dict((tup[1], tup[0]) for tup in problem)
