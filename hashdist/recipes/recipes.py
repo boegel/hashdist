@@ -211,7 +211,7 @@ def find_dependency_in_spec(spec, ref):
         if item['ref'] == ref:
             return item
 
-def constrained_sort(dependencies):
+def constrained_sort(problem):
     """Sorts a list 
     
     """
