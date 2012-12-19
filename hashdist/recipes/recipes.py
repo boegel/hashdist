@@ -226,9 +226,6 @@ def order_by_constraints(problem):
     by their key); then finally output the sub-trees ordered by their
     key.
     
-    
-    where we require that ``
-    
     """
 
 class HdistTool(Recipe):
