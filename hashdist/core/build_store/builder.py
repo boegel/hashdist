@@ -14,6 +14,7 @@ import sys
 from textwrap import dedent
 from string import Template
 import contextlib
+from pprint import pformat
 
 from ..source_cache import scatter_files
 from ..sandbox import get_artifact_dependencies_env
