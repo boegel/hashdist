@@ -239,6 +239,7 @@ def order_by_constraints(problem):
             after_lst = [virtual_root]
         for after_obj in after_lst:
             before_edges.setdefault(after_obj, []).append(obj)
+
     # find roots, and for each root 
     roots = set(tup[1] for tup in problem)
 
