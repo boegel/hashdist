@@ -178,7 +178,9 @@ class Recipe(object):
     # Subclasses may override the following
 
     def get_dependencies_spec(self):
-        sorted_dependencies = constraint_sort(self.dependencies)
+        sorted_dependencies = constraint_sort(
+            [(dep.get_artifact_id(), [x.get_artifact_id() for x in dep.constrain_to_after])
+             for dep in self.dependencies])
         
         dep_specs = []
         for dep_name, dep in dependencies:
@@ -208,7 +210,9 @@ def find_dependency_in_spec(spec, ref):
             return item
 
 def constraint_sort(dependencies):
+    """
     
+    """
 
 class HdistTool(Recipe):
     def __init__(self):
