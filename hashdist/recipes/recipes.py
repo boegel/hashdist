@@ -234,7 +234,7 @@ def order_by_constraints(problem):
     graph = {}
     roots = set(tup[1] for tup in problem)
     for key, obj, after_lst in problem:
-        after_lst = sorted(after_lst, key=keys.__getitem__, reverse=True)
+        after_lst = sorted(after_lst, key=keys.__getitem__, reverse=False)
         graph[obj] = after_lst
         roots.difference_update(after_lst)
 
