@@ -154,6 +154,8 @@ class ArtifactBuilder(object):
         def subs(x):
             return Template(x).substitute(env)
 
+        def tee(line):
+
         log_filename = pjoin(build_dir, 'build.log')
         
         artifact_display_name = shorten_artifact_id(self.artifact_id, ARTIFACT_ID_LEN) + '..'
@@ -207,8 +209,7 @@ class ArtifactBuilder(object):
                     line = proc.stdout.readline()
                     if not line:
                         break
-                    self.logger.debug(line.strip())
-                    log_file.write(line)
+                    tee(line)
                 retcode = proc.wait()
                 if retcode != 0:
                     log_file.write("hdist: command FAILED with code %d\n" % retcode)
