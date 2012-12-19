@@ -255,34 +255,6 @@ def order_by_constraints(problem):
 
     return result
 
-    
-    graph = dcit((tup[1], tup[2]) for tup in problem
-
-    
-    # Invert the DAG + construct virtual root
-    virtual_root = object()
-    before_edges = {}
-    for key, obj, after_lst in problem:
-        if not after_lst:
-            # this is a root in the inverted DAG, so add a dependency
-            # from the virtual root to it
-            after_lst = [virtual_root]
-        for after_obj in after_lst:
-            before_edges.setdefault(after_obj, []).append(obj)
-
-    # sort the edges list
-    for obj, edges in before_edges.iteritems():
-        edges.sort(key=lambda obj: keys[obj])
-
-    result = []
-    def dfs(node):
-        if node not in result:
-            result.append(node)
-            for child in before_edges.get(node, ()):
-                dfs(child)
-    dfs(virtual_root)
-    return result[1:] # skip virtual root in output
-
 
 class HdistTool(Recipe):
     def __init__(self):
