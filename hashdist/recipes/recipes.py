@@ -220,6 +220,8 @@ def order_by_constraints(problem):
     after the constraints are satisfied (the result may not be perfectly
     sorted, but it will be stable).
 
+    `obj` must be hashable, `key` must be comparable
+
     The concrete algorithm is to first invert the DAG (each object knows
     which ones it should come before), then start at the roots of this
     DAG and form sub-trees using DFS (visiting children in order sorted
@@ -240,10 +242,13 @@ def order_by_constraints(problem):
         for after_obj in after_lst:
             before_edges.setdefault(after_obj, []).append(obj)
 
+    # sort the edges list
+    for obj, 
+
     result = []
     def dfs(node):
         result.append(node)
-        
+        children = 
 
     # find roots, and for each root 
     roots = set(tup[1] for tup in problem)
