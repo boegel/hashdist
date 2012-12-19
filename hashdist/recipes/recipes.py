@@ -237,7 +237,7 @@ def order_by_constraints(problem):
     graph = {}
     roots = set(tup[1] for tup in problem)
     for key, obj, after_lst in problem:
-        after_lst = sorted(after_lst, key=lambda obj: keys[obj])
+        after_lst = sorted(after_lst, key=keys.__getitem__)
         graph[obj] = after_lst
         roots.difference_update(after_lst)
 
@@ -249,8 +249,8 @@ def order_by_constraints(problem):
                 dfs(child)
             order_for_reached.append(child)
 
-    roots = sorted(roots)
-    for obj in roots:
+    roots = 
+    for obj in sorted(roots, key=keys.__getitem__):
         order_for_reached = []
         dfs(obj, order_for_reached)
 
