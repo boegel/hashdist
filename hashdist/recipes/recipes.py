@@ -252,7 +252,6 @@ def order_by_constraints(problem):
     for obj in sorted(roots, key=keys.__getitem__):
         dfs(obj)
 
-
     return result
 
 
